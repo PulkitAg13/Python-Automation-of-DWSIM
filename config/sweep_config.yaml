@@ -1,0 +1,34 @@
+# Parametric Sweep Configuration
+pfr:
+  ranges:
+    temperature:
+      min: 300
+      max: 400
+      steps: 5
+    volume:
+      min: 0.5
+      max: 5.0
+      steps: 5
+  method: "linear"
+  parallel: false
+  max_workers: 4
+
+distillation:
+  ranges:
+    reflux_ratio:
+      min: 1.0
+      max: 5.0
+      steps: 5
+    stages:
+      min: 5
+      max: 20
+      steps: 4
+  method: "linear"
+  parallel: false
+  max_workers: 4
+
+general:
+  save_intermediate_results: true
+  stop_on_error: false
+  log_level: "INFO"
+  output_directory: "results"
