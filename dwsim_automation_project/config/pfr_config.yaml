@@ -1,0 +1,51 @@
+# PFR Reactor Configuration
+reactor:
+  volume: 1.0  # m³
+  temperature: 350.0  # K
+  pressure: 101325  # Pa
+  length: 5.0  # m
+  diameter: 0.5  # m
+  isothermal: true
+
+feed:
+  temperature: 300.0  # K
+  pressure: 101325  # Pa
+  flow_rate: 100.0  # kmol/h
+  composition:
+    A: 1.0  # Pure component A
+    B: 0.0
+
+reaction:
+  type: "irreversible"
+  equation: "A -> B"
+  kinetics:
+    rate_constant: 0.1  # 1/s
+    activation_energy: 50000  # J/mol
+    pre_exponential: 1e6
+    order: 1.0
+
+solver:
+  type: "integrator"
+  method: "RK4"
+  tolerance: 1e-6
+  max_iterations: 1000
+  max_time: 30  # seconds
+
+sweep:
+  temperature:
+    min: 300
+    max: 400
+    steps: 5
+    unit: "K"
+  volume:
+    min: 0.5
+    max: 5.0
+    steps: 5
+    unit: "m³"
+  method: "linear"
+
+output:
+  save_stream_results: true
+  save_detailed_results: true
+  generate_plots: true
+  plot_format: "png"
