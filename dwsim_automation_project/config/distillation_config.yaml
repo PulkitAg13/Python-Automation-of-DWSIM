@@ -1,0 +1,51 @@
+# Distillation Column Configuration
+column:
+  stages: 10
+  feed_stage: 5
+  reflux_ratio: 2.0
+  distillate_rate: 50.0  # kmol/h
+  condenser:
+    type: "total"
+    pressure: 101325  # Pa
+  reboiler:
+    type: "kettle"
+    pressure: 101325  # Pa
+
+feed:
+  temperature: 350.0  # K
+  pressure: 101325  # Pa
+  flow_rate: 100.0  # kmol/h
+  composition:
+    A: 0.5  # Binary mixture
+    B: 0.5
+
+components:
+  light_key: "A"
+  heavy_key: "B"
+  relative_volatility: 2.5
+
+solver:
+  algorithm: "Wang-Henke"
+  tolerance: 1e-6
+  max_iterations: 100
+  damping_factor: 0.5
+  convergence_criteria: "composition"
+
+sweep:
+  reflux_ratio:
+    min: 1.0
+    max: 5.0
+    steps: 5
+    unit: ""
+  stages:
+    min: 5
+    max: 20
+    steps: 4
+    unit: ""
+  method: "linear"
+
+output:
+  save_stream_results: true
+  save_column_profile: true
+  generate_plots: true
+  plot_format: "png"
