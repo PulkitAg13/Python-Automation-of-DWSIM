@@ -1,0 +1,2 @@
+2026-01-29 21:49:53 - run_screening - INFO - logger.py:63 - Logging to file: results/simulation.log
+2026-01-29 21:49:53 - run_screening - ERROR - run_screening.py:169 - Initialization failed
